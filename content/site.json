@@ -1,0 +1,93 @@
+{
+  "siteTitle": "John Lewis",
+  "infoLabel": "Info",
+  "onlyWorkLabel": "Only Work",
+  "columnTitles": {
+    "shortStories": "Short Story Preview",
+    "poems": "Poems",
+    "interviews": "Interview Series Excerpt",
+    "biography": "Biography",
+    "references": "References",
+    "contact": "Contact"
+  },
+  "biography": [
+    {
+      "title": "Title",
+      "text": "John Lewis is a writer and editor based in New York. His work has appeared in The Paris Review, n+1, and The New Yorker. He is the author of two collections of short fiction and a novel forthcoming from Farrar, Straus and Giroux."
+    },
+    {
+      "title": "Title",
+      "text": "Before turning to fiction full-time, Lewis worked as a literary editor at a major publishing house, where he acquired and edited debut novels, essay collections, and works of narrative nonfiction. He holds an MFA from the Iowa Writers' Workshop and a BA from Yale."
+    },
+    {
+      "title": "Title",
+      "text": "His writing explores themes of memory, identity, and the textures of everyday life. He has received fellowships from the MacDowell Colony, Yaddo, and the Bread Loaf Writers' Conference."
+    }
+  ],
+  "shortStories": [
+    {
+      "title": "Title",
+      "text": "The morning light came through the blinds in thin stripes across the floor. She had been awake for an hour already, listening to the building settle around her—the radiator clicking, a door closing somewhere below, the distant hum of traffic on the avenue.\n\nShe thought about calling him. Not because she had anything particular to say, but because the silence had grown too large to navigate alone. Last night they had argued about something small—a dish left in the sink, a tone of voice—and now the argument felt like a stand-in for everything they hadn't said in months."
+    },
+    {
+      "title": "Title",
+      "text": "He walked the length of the pier without stopping, hands in his pockets, the wind coming off the water sharp and clean. At the end he stood for a long time looking out at the harbor, at the boats rocking in their slips, at the city rising behind him like something remembered rather than seen.\n\nHis father used to bring him here on Sundays. They would buy coffee from the cart near the entrance and sit on the bench facing east, watching the ferries come and go. His father never said much on those mornings. Neither did he. It was enough to be there together."
+    }
+  ],
+  "poems": [
+    {
+      "title": "Title",
+      "text": "After the rain the garden\nholds its breath.\nEach leaf a small mirror\nfor what the sky forgot.\n\nI walk the path you laid\nbefore you left—\nstone by stone,\nthe way back in."
+    },
+    {
+      "title": "Title",
+      "text": "Winter light on the table.\nYour cup still warm.\nI read the newspaper\nas if you might return.\n\nThe clock marks hours\nwe no longer share.\nI fold the page\nand set it down."
+    }
+  ],
+  "interviews": [
+    {
+      "title": "Title",
+      "text": "<p><strong>Interviewer:</strong> When did you first know you wanted to write fiction?</p><p><strong>JL:</strong> I don't think there was a single moment. It was more like a slow accumulation—a series of small permissions I gave myself. Reading something that moved me and thinking, I want to do that. Not imitate it, but participate in whatever that exchange is between writer and reader.</p><p><strong>Interviewer:</strong> Your stories often center on ordinary moments. Is that intentional?</p><p><strong>JL:</strong> Completely. I'm interested in the drama that lives inside what we call uneventful. A conversation that goes slightly wrong. A memory that surfaces at the wrong time. Those are the moments where character reveals itself.</p>"
+    },
+    {
+      "title": "Title",
+      "text": "<p><strong>Interviewer:</strong> Who are you reading now?</p><p><strong>JL:</strong> Too many things at once, as always. I just finished rereading James Baldwin's \"Sonny's Blues\" for probably the twentieth time. I'm also deep into a novel by a young writer from Lagos whose name I probably shouldn't mention until I've finished.</p>"
+    }
+  ],
+  "references": [
+    {
+      "title": "Sarah Chen, The New York Times Book Review",
+      "text": "Lewis writes with a precision that makes the ordinary feel luminous. Every sentence earns its place."
+    },
+    {
+      "title": "Michael Torres, The Paris Review",
+      "text": "A master of the quiet moment—his stories linger long after the last page."
+    },
+    {
+      "title": "Elena Vasquez, n+1",
+      "text": "One of the most distinctive voices in contemporary American fiction."
+    },
+    {
+      "title": "David Okonkwo, Granta",
+      "text": "Lewis has the rare ability to find the epic within the everyday."
+    }
+  ],
+  "contactLinks": [
+    {
+      "title": "Email",
+      "text": "mailto:john@example.com"
+    },
+    {
+      "title": "Phone",
+      "text": "tel:+12125551234"
+    },
+    {
+      "title": "CV",
+      "text": "#"
+    },
+    {
+      "title": "Decadent Identities",
+      "text": "#"
+    }
+  ]
+}

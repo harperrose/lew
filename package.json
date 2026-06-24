@@ -1,0 +1,29 @@
+{
+  "name": "lew",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "tinacms dev",
+    "build:site": "node scripts/build.mjs",
+    "build": "npm run build:site && tinacms build",
+    "preview": "npx serve public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harperrose/lew.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/harperrose/lew/issues"
+  },
+  "homepage": "https://github.com/harperrose/lew#readme",
+  "devDependencies": {
+    "@tinacms/cli": "^2.5.1",
+    "@types/node": "^26.0.0",
+    "tinacms": "^3.9.3",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Lewis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="site-title">John Lewis</a>
+    <button type="button" class="info-toggle" aria-expanded="false" aria-controls="main-content">
+      <span class="info-toggle-label">Info</span>
+    </button>
+  </header>
+
+  <main id="main-content" class="columns">
+    <section class="column" aria-label="Short Story Preview">
+      <div class="overlay-block" hidden>
+        <div class="column-header">Biography</div>
+        <div class="column-body">
+          <p>John Lewis is a writer and editor based in New York. His work has appeared in The Paris Review, n+1, and The New Yorker. He is the author of two collections of short fiction and a novel forthcoming from Farrar, Straus and Giroux.</p>
+          <p>Before turning to fiction full-time, Lewis worked as a literary editor at a major publishing house, where he acquired and edited debut novels, essay collections, and works of narrative nonfiction. He holds an MFA from the Iowa Writers' Workshop and a BA from Yale.</p>
+          <p>His writing explores themes of memory, identity, and the textures of everyday life. He has received fellowships from the MacDowell Colony, Yaddo, and the Bread Loaf Writers' Conference.</p>
+        </div>
+      </div>
+      <div class="column-header">Short Story Preview</div>
+      <div class="column-body">
+        <article class="content-block">
+          <p class="content-label">Title</p>
+          <p>The morning light came through the blinds in thin stripes across the floor. She had been awake for an hour already, listening to the building settle around her—the radiator clicking, a door closing somewhere below, the distant hum of traffic on the avenue.</p>
+          <p>She thought about calling him. Not because she had anything particular to say, but because the silence had grown too large to navigate alone. Last night they had argued about something small—a dish left in the sink, a tone of voice—and now the argument felt like a stand-in for everything they hadn't said in months.</p>
+        </article>
+        <article class="content-block">
+          <p class="content-label">Title</p>
+          <p>He walked the length of the pier without stopping, hands in his pockets, the wind coming off the water sharp and clean. At the end he stood for a long time looking out at the harbor, at the boats rocking in their slips, at the city rising behind him like something remembered rather than seen.</p>
+          <p>His father used to bring him here on Sundays. They would buy coffee from the cart near the entrance and sit on the bench facing east, watching the ferries come and go. His father never said much on those mornings. Neither did he. It was enough to be there together.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column" aria-label="Poems">
+      <div class="overlay-block" hidden>
+        <div class="column-header">References</div>
+        <div class="column-body references-body">
+          <div class="references-carousel" aria-live="polite">
+            <p class="references-counter"><span class="references-current">1</span>/<span class="references-total">4</span></p>
+            <blockquote class="references-quote"></blockquote>
+            <cite class="references-cite"></cite>
+          </div>
+        </div>
+      </div>
+      <div class="column-header">Poems</div>
+      <div class="column-body">
+        <article class="content-block">
+          <p class="content-label">Title</p>
+          <p>After the rain the garden<br>holds its breath.<br>Each leaf a small mirror<br>for what the sky forgot.</p>
+          <p>I walk the path you laid<br>before you left—<br>stone by stone,<br>the way back in.</p>
+        </article>
+        <article class="content-block">
+          <p class="content-label">Title</p>
+          <p>Winter light on the table.<br>Your cup still warm.<br>I read the newspaper<br>as if you might return.</p>
+          <p>The clock marks hours<br>we no longer share.<br>I fold the page<br>and set it down.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column" aria-label="Interview Series Excerpt">
+      <div class="overlay-block" hidden>
+        <div class="column-header">Contact</div>
+        <div class="column-body contact-body">
+          <nav class="contact-links" aria-label="Contact links">
+            <a href="mailto:john@example.com" class="contact-pill">Email</a>
+            <a href="tel:+12125551234" class="contact-pill">Phone</a>
+            <a href="#" class="contact-pill">CV</a>
+            <a href="#" class="contact-pill">Decadent Identities</a>
+          </nav>
+        </div>
+      </div>
+      <div class="column-header">Interview Series Excerpt</div>
+      <div class="column-body">
+        <article class="content-block">
+          <p class="content-label">Title</p>
+          <p><strong>Interviewer:</strong> When did you first know you wanted to write fiction?</p>
+          <p><strong>JL:</strong> I don't think there was a single moment. It was more like a slow accumulation—a series of small permissions I gave myself. Reading something that moved me and thinking, I want to do that. Not imitate it, but participate in whatever that exchange is between writer and reader.</p>
+          <p><strong>Interviewer:</strong> Your stories often center on ordinary moments. Is that intentional?</p>
+          <p><strong>JL:</strong> Completely. I'm interested in the drama that lives inside what we call uneventful. A conversation that goes slightly wrong. A memory that surfaces at the wrong time. Those are the moments where character reveals itself.</p>
+        </article>
+        <article class="content-block">
+          <p class="content-label">Title</p>
+          <p><strong>Interviewer:</strong> Who are you reading now?</p>
+          <p><strong>JL:</strong> Too many things at once, as always. I just finished rereading James Baldwin's "Sonny's Blues" for probably the twentieth time. I'm also deep into a novel by a young writer from Lagos whose name I probably shouldn't mention until I've finished.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

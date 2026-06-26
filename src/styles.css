@@ -155,6 +155,10 @@ body.info-open .overlay-block {
   display: block;
 }
 
+.overlay-block .column-body {
+  background-color: var(--color-background);
+}
+
 .references-body {
   min-height: 10rem;
   display: flex;

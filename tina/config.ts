@@ -14,6 +14,7 @@ export default defineConfig({
   build: {
     publicFolder: "public",
     outputFolder: "admin",
+    basePath: "lew",
   },
   media: {
     tina: {

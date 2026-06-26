@@ -7,7 +7,8 @@ var config_default = defineConfig({
   token: process.env.TINA_TOKEN,
   build: {
     publicFolder: "public",
-    outputFolder: "admin"
+    outputFolder: "admin",
+    basePath: "lew"
   },
   media: {
     tina: {

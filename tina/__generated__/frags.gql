@@ -1,0 +1,45 @@
+fragment SiteParts on Site {
+  __typename
+  siteTitle
+  infoLabel
+  onlyWorkLabel
+  columnTitles {
+    __typename
+    shortStories
+    poems
+    interviews
+    biography
+    references
+    contact
+  }
+  biography {
+    __typename
+    title
+    text
+  }
+  shortStories {
+    __typename
+    title
+    text
+  }
+  poems {
+    __typename
+    title
+    text
+  }
+  interviews {
+    __typename
+    title
+    text
+  }
+  references {
+    __typename
+    title
+    text
+  }
+  contactLinks {
+    __typename
+    title
+    text
+  }
+}

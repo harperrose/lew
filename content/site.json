@@ -1,9 +1,9 @@
 {
   "siteTitle": "John Lewis",
-  "infoLabel": "Info",
-  "onlyWorkLabel": "Only Work",
+  "infoLabel": "About Him",
+  "onlyWorkLabel": "See Work",
   "columnTitles": {
-    "shortStories": "Short Story Preview",
+    "shortStories": "Short Stories",
     "poems": "Poems",
     "interviews": "Interview Series Excerpt",
     "biography": "Biography",

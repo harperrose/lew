@@ -1,10 +1,10 @@
 :root {
-  --color-light-blue: #E2E3EC;
-  --color-dark-blue: #262945;
-  --color-background: rgba(38, 41, 69, 0.2);
+  --color-background: #E5D9BC;
+  --color-text: #34280C;
   --header-height: 2.75rem;
   --column-header-height: 2.25rem;
-  --font-family: "Gothic A1", sans-serif;
+  --font-family: "DIN Alternate", "Arial Narrow", Arial, sans-serif;
+  --font-family-bold: "DIN Alternate", "Arial Narrow", Arial, sans-serif;
 }
 
 *,
@@ -25,8 +25,8 @@ html::-webkit-scrollbar {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--color-light-blue);
-  color: var(--color-dark-blue);
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-family);
   font-size: 0.8125rem;
   font-weight: 400;
@@ -62,46 +62,40 @@ button {
   justify-content: space-between;
   height: var(--header-height);
   padding: 0 1rem;
+  background-color: var(--color-background);
 }
 
 .site-title {
+  font-family: var(--font-family-bold);
   font-weight: 700;
   font-size: 0.875rem;
 }
 
-.info-toggle {
-  font-weight: 400;
+.site-nav {
   font-size: 0.875rem;
 }
 
-.info-toggle:hover,
-.info-toggle:focus-visible {
+.site-nav:hover,
+.site-nav:focus-visible {
   text-decoration: underline;
   outline: none;
+}
+
+.page-content {
+  padding: 0 12px 2rem;
 }
 
 .columns {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  height: calc(100vh - var(--header-height));
-  overflow: hidden;
 }
 
 .column {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.column::-webkit-scrollbar {
-  display: none;
+  min-width: 0;
 }
 
 .column-header {
@@ -110,18 +104,16 @@ button {
   align-items: center;
   justify-content: center;
   height: var(--column-header-height);
-  background-color: var(--color-dark-blue);
-  color: var(--color-light-blue);
-  font-weight: 600;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  font-family: var(--font-family-bold);
+  font-weight: 700;
   font-size: 0.75rem;
   text-align: center;
-  margin-bottom: 0.75rem;
 }
 
 .column-body {
-  flex: 1 0 auto;
-  padding: 1.25rem 1rem 2rem;
-  background-color: var(--color-light-blue);
+  padding: 0 0.25rem 1rem;
 }
 
 .content-block {
@@ -134,7 +126,7 @@ button {
 
 .content-label {
   margin: 0 0 0.75rem;
-  color: rgba(38, 41, 69, 0.45);
+  color: rgba(52, 40, 12, 0.45);
   font-size: 0.6875rem;
   text-align: center;
 }
@@ -147,6 +139,13 @@ button {
   margin-bottom: 0;
 }
 
+.poem-image {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  mix-blend-mode: luminosity;
+}
+
 .story-text {
   margin: 0;
 }
@@ -154,65 +153,13 @@ button {
 .read-all {
   display: inline;
   padding: 0;
-  color: rgba(38, 41, 69, 0.65);
+  color: rgba(52, 40, 12, 0.65);
   text-decoration: underline;
 }
 
 .read-all:hover,
 .read-all:focus-visible {
-  color: var(--color-dark-blue);
-  outline: none;
-}
-
-.overlay-block[hidden] {
-  display: none;
-}
-
-body.info-open .overlay-block {
-  display: block;
-}
-
-.overlay-block .column-body {
-  background-color: var(--color-background);
-}
-
-.overlay-block .contact-body {
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
-  padding: 0;
-  min-height: auto;
-}
-
-.contact-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  width: fit-content;
-  max-width: 100%;
-  padding: 1.25rem 1rem;
-  background-color: var(--color-light-blue);
-}
-
-.contact-link {
-  display: inline-block;
-  padding: 0.375rem 0.875rem;
-  background-color: var(--color-light-blue);
-  color: var(--color-dark-blue);
-  font-size: 0.6875rem;
-  transition: background-color 0.15s ease;
-}
-
-.contact-link:hover,
-.contact-link:focus-visible {
-  background-color: rgba(38, 41, 69, 0.08);
+  color: var(--color-text);
   outline: none;
 }
 
@@ -230,14 +177,15 @@ body.info-open .overlay-block {
 .references-counter {
   margin: 0 0 1rem;
   font-size: 0.6875rem;
-  color: rgba(38, 41, 69, 0.55);
+  color: rgba(52, 40, 12, 0.55);
 }
 
 .references-quote {
   margin: 0 0 1rem;
   padding: 0;
+  font-family: var(--font-family-bold);
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.45;
   border: none;
 }
@@ -246,15 +194,48 @@ body.info-open .overlay-block {
   display: block;
   font-style: normal;
   font-size: 0.6875rem;
-  color: rgba(38, 41, 69, 0.65);
+  color: rgba(52, 40, 12, 0.65);
+}
+
+.contact-body {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.contact-link {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  font-family: var(--font-family-bold);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  transition: opacity 0.15s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  opacity: 0.85;
+  outline: none;
 }
 
 @media (max-width: 768px) {
+  .page-content {
+    padding: 0 0 2rem;
+  }
+
   .columns {
     display: flex;
     flex-direction: column;
-    height: auto;
-    overflow: visible;
+    gap: 0;
   }
 
   .column {
@@ -267,39 +248,7 @@ body.info-open .overlay-block {
     z-index: 10;
   }
 
-  body.info-open .column:nth-child(1) .overlay-block {
-    order: 1;
-  }
-
-  body.info-open .column:nth-child(2) .overlay-block {
-    order: 2;
-  }
-
-  body.info-open .column:nth-child(3) .overlay-block {
-    order: 3;
-  }
-
-  body.info-open .column:nth-child(1) > .column-header {
-    order: 4;
-  }
-
-  body.info-open .column:nth-child(1) > .column-body {
-    order: 5;
-  }
-
-  body.info-open .column:nth-child(2) > .column-header {
-    order: 6;
-  }
-
-  body.info-open .column:nth-child(2) > .column-body {
-    order: 7;
-  }
-
-  body.info-open .column:nth-child(3) > .column-header {
-    order: 8;
-  }
-
-  body.info-open .column:nth-child(3) > .column-body {
-    order: 9;
+  .column-body {
+    padding: 0 1rem 1.5rem;
   }
 }

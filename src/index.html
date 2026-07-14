@@ -4,54 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Lewis</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/din-alternate">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="work">
   <header class="site-header">
     <a href="./" class="site-title">John Lewis</a>
-    <button type="button" class="info-toggle" aria-expanded="false" aria-controls="main-content">
-      <span class="info-toggle-label">Info</span>
-    </button>
+    <a href="about.html" class="site-nav" data-nav="about"></a>
   </header>
 
-  <main id="main-content" class="columns">
-    <section class="column" aria-label="Short Story Preview">
-      <div class="overlay-block" hidden>
-        <div class="column-header" data-column="biography"></div>
-        <div class="column-body" data-content="biography"></div>
-      </div>
-      <div class="column-header" data-column="shortStories"></div>
-      <div class="column-body" data-content="shortStories"></div>
-    </section>
+  <main id="main-content" class="page-content">
+    <div class="columns">
+      <section class="column" aria-label="Short Stories">
+        <div class="column-header" data-column="shortStories"></div>
+        <div class="column-body" data-content="shortStories"></div>
+      </section>
 
-    <section class="column" aria-label="Poems">
-      <div class="overlay-block" hidden>
-        <div class="column-header" data-column="references"></div>
-        <div class="column-body references-body">
-          <div class="references-carousel" aria-live="polite">
-            <p class="references-counter"><span class="references-current">1</span>/<span class="references-total">1</span></p>
-            <blockquote class="references-quote"></blockquote>
-            <cite class="references-cite"></cite>
-          </div>
-        </div>
-      </div>
-      <div class="column-header" data-column="poems"></div>
-      <div class="column-body" data-content="poems"></div>
-    </section>
+      <section class="column" aria-label="Poems">
+        <div class="column-header" data-column="poems"></div>
+        <div class="column-body" data-content="poems"></div>
+      </section>
 
-    <section class="column" aria-label="Interview Series Excerpt">
-      <div class="overlay-block" hidden>
-        <div class="column-header" data-column="contact"></div>
-        <div class="column-body contact-body">
-          <nav class="contact-links" aria-label="Contact links" data-content="contact"></nav>
-        </div>
-      </div>
-      <div class="column-header" data-column="interviews"></div>
-      <div class="column-body" data-content="interviews"></div>
-    </section>
+      <section class="column" aria-label="Interview Series Excerpt">
+        <div class="column-header" data-column="interviews"></div>
+        <div class="column-body" data-content="interviews"></div>
+      </section>
+    </div>
   </main>
 
   <script src="script.js"></script>

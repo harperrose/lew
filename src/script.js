@@ -1,16 +1,18 @@
 const REFERENCE_INTERVAL_MS = 4000;
-const SHORT_STORY_LIMIT = 400;
+const SHORT_STORY_LIMIT_MOBILE = 400;
+const SHORT_STORY_LIMIT_DESKTOP = 1600;
+const MOBILE_MEDIA_QUERY = window.matchMedia("(max-width: 768px)");
+const PAGE = document.body.dataset.page;
 
 let siteData = null;
 let referenceIndex = 0;
 let referenceTimer = null;
 
-const toggleBtn = document.querySelector(".info-toggle");
-const toggleLabel = document.querySelector(".info-toggle-label");
-const quoteEl = document.querySelector(".references-quote");
-const citeEl = document.querySelector(".references-cite");
-const currentEl = document.querySelector(".references-current");
-const totalEl = document.querySelector(".references-total");
+function getShortStoryLimit() {
+  return MOBILE_MEDIA_QUERY.matches
+    ? SHORT_STORY_LIMIT_MOBILE
+    : SHORT_STORY_LIMIT_DESKTOP;
+}
 
 function escapeHtml(value) {
   return value
@@ -20,8 +22,35 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;");
 }
 
+function resolveMediaSrc(src) {
+  if (!src) {
+    return "";
+  }
+
+  if (typeof src === "object" && src.src) {
+    return resolveMediaSrc(src.src);
+  }
+
+  if (src.startsWith("http") || src.startsWith("//")) {
+    return src;
+  }
+
+  if (src.startsWith("/")) {
+    return `.${src}`;
+  }
+
+  return `./${src}`;
+}
+
 function formatPoemText(text) {
   return escapeHtml(text).replace(/\n/g, "<br>");
+}
+
+function renderBiographyParagraphs(text) {
+  return text
+    .split(/\n\n+/)
+    .map((paragraph) => `<p>${escapeHtml(paragraph.trim())}</p>`)
+    .join("");
 }
 
 function normalizePlainText(text) {
@@ -30,27 +59,36 @@ function normalizePlainText(text) {
 
 function truncateStory(text) {
   const plain = normalizePlainText(text);
-  if (plain.length <= SHORT_STORY_LIMIT) {
+  const limit = getShortStoryLimit();
+
+  if (plain.length <= limit) {
     return { preview: plain, isTruncated: false };
   }
 
   return {
-    preview: `${plain.slice(0, SHORT_STORY_LIMIT).trimEnd()}…`,
+    preview: `${plain.slice(0, limit).trimEnd()}…`,
     full: plain,
     isTruncated: true,
   };
 }
 
-function renderContentBlocks(items, renderText) {
-  return items
-    .map(
-      (item) => `
+function renderContentBlocks(items, renderText, options = {}) {
+  const { showTitle = true } = options;
+
+  return (items ?? [])
+    .map((item) => {
+      const titleMarkup =
+        showTitle && item.title
+          ? `<p class="content-label">${escapeHtml(item.title)}</p>`
+          : "";
+
+      return `
         <article class="content-block">
-          <p class="content-label">${escapeHtml(item.title)}</p>
-          ${renderText(item.text)}
+          ${titleMarkup}
+          ${renderText(item)}
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
@@ -75,6 +113,24 @@ function renderShortStories(stories) {
     .join("");
 }
 
+function renderPoems(poems) {
+  return (poems ?? [])
+    .map((poem) => {
+      const imageMarkup = poem.image
+        ? `<img class="poem-image" src="${escapeHtml(resolveMediaSrc(poem.image))}" alt="">`
+        : "";
+
+      return `
+        <article class="content-block">
+          <p class="content-label">${escapeHtml(poem.title)}</p>
+          <p>${formatPoemText(poem.text)}</p>
+          ${imageMarkup}
+        </article>
+      `;
+    })
+    .join("");
+}
+
 function bindReadAllButtons() {
   document.querySelectorAll(".read-all").forEach((button) => {
     button.addEventListener("click", () => {
@@ -89,33 +145,50 @@ function bindReadAllButtons() {
   });
 }
 
-function renderSite(data) {
-  document.title = data.siteTitle;
+function renderHeader(data) {
+  document.title = PAGE === "about" ? `${data.siteTitle} — About` : data.siteTitle;
   document.querySelector(".site-title").textContent = data.siteTitle;
-  toggleLabel.textContent = data.infoLabel;
+
+  const navLink = document.querySelector(".site-nav");
+  if (navLink) {
+    navLink.textContent =
+      PAGE === "about" ? data.onlyWorkLabel : data.infoLabel;
+  }
 
   document.querySelectorAll("[data-column]").forEach((el) => {
     const key = el.dataset.column;
     el.textContent = data.columnTitles[key] ?? key;
   });
+}
 
-  document.querySelector('[data-content="biography"]').innerHTML = renderContentBlocks(
-    data.biography ?? [],
-    (text) => `<p>${escapeHtml(text)}</p>`
-  );
-
+function renderWorkPage(data) {
   document.querySelector('[data-content="shortStories"]').innerHTML =
     renderShortStories(data.shortStories);
   bindReadAllButtons();
 
-  document.querySelector('[data-content="poems"]').innerHTML = renderContentBlocks(
-    data.poems ?? [],
-    (text) => `<p>${formatPoemText(text)}</p>`
-  );
+  document.querySelector('[data-content="poems"]').innerHTML = renderPoems(data.poems);
 
   document.querySelector('[data-content="interviews"]').innerHTML = renderContentBlocks(
-    data.interviews ?? [],
-    (text) => text
+    data.interviews,
+    (item) => item.text
+  );
+
+  document
+    .querySelector('[aria-label="Short Stories"]')
+    ?.setAttribute("aria-label", data.columnTitles.shortStories);
+  document
+    .querySelector('[aria-label="Poems"]')
+    ?.setAttribute("aria-label", data.columnTitles.poems);
+  document
+    .querySelector('[aria-label="Interview Series Excerpt"]')
+    ?.setAttribute("aria-label", data.columnTitles.interviews);
+}
+
+function renderAboutPage(data) {
+  document.querySelector('[data-content="biography"]').innerHTML = renderContentBlocks(
+    data.biography,
+    (item) => renderBiographyParagraphs(item.text),
+    { showTitle: false }
   );
 
   document.querySelector('[data-content="contact"]').innerHTML = (data.contactLinks ?? [])
@@ -125,24 +198,32 @@ function renderSite(data) {
     )
     .join("");
 
-  document.querySelector('[aria-label="Short Story Preview"]').setAttribute(
-    "aria-label",
-    data.columnTitles.shortStories
+  document.querySelector(".references-total").textContent = String(
+    (data.references ?? []).length || 1
   );
-  document.querySelector('[aria-label="Poems"]').setAttribute(
-    "aria-label",
-    data.columnTitles.poems
-  );
-  document.querySelector('[aria-label="Interview Series Excerpt"]').setAttribute(
-    "aria-label",
-    data.columnTitles.interviews
-  );
-
-  totalEl.textContent = String((data.references ?? []).length || 1);
   renderReference(0);
+  startReferenceCycle();
+
+  document
+    .querySelector('[aria-label="Biography"]')
+    ?.setAttribute("aria-label", data.columnTitles.biography);
+  document
+    .querySelector('[aria-label="References"]')
+    ?.setAttribute("aria-label", data.columnTitles.references);
+  document
+    .querySelector('[aria-label="Contact"]')
+    ?.setAttribute("aria-label", data.columnTitles.contact);
 }
 
 function renderReference(index) {
+  const quoteEl = document.querySelector(".references-quote");
+  const citeEl = document.querySelector(".references-cite");
+  const currentEl = document.querySelector(".references-current");
+
+  if (!quoteEl || !citeEl || !currentEl) {
+    return;
+  }
+
   const references = siteData?.references ?? [];
   if (!references.length) {
     quoteEl.textContent = "";
@@ -181,28 +262,15 @@ function stopReferenceCycle() {
   }
 }
 
-function setInfoOpen(isOpen) {
-  document.body.classList.toggle("info-open", isOpen);
-  toggleBtn.setAttribute("aria-expanded", String(isOpen));
-  toggleLabel.textContent = isOpen ? siteData.onlyWorkLabel : siteData.infoLabel;
-
-  document.querySelectorAll(".overlay-block").forEach((block) => {
-    block.hidden = !isOpen;
-  });
-
-  if (isOpen) {
-    startReferenceCycle();
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  } else {
-    stopReferenceCycle();
+function renderShortStoriesColumn() {
+  if (!siteData || PAGE !== "work") {
+    return;
   }
-}
 
-toggleBtn.addEventListener("click", () => {
-  setInfoOpen(!document.body.classList.contains("info-open"));
-});
+  document.querySelector('[data-content="shortStories"]').innerHTML =
+    renderShortStories(siteData.shortStories);
+  bindReadAllButtons();
+}
 
 async function init() {
   const response = await fetch("data/site.json");
@@ -211,13 +279,20 @@ async function init() {
   }
 
   siteData = await response.json();
-  renderSite(siteData);
+  renderHeader(siteData);
+
+  if (PAGE === "work") {
+    renderWorkPage(siteData);
+    MOBILE_MEDIA_QUERY.addEventListener("change", renderShortStoriesColumn);
+  } else if (PAGE === "about") {
+    renderAboutPage(siteData);
+  }
 }
 
 init().catch((error) => {
   console.error(error);
   document.body.insertAdjacentHTML(
     "beforeend",
-    '<p style="padding:1rem;color:#262945;">Unable to load site content.</p>'
+    '<p style="padding:1rem;color:#34280C;">Unable to load site content.</p>'
   );
 });

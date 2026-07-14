@@ -34,6 +34,7 @@ export const SitePartsFragmentDoc = gql`
     __typename
     title
     text
+    image
   }
   interviews {
     __typename
@@ -139,7 +140,7 @@ const generateRequester = (client) => {
 export const ExperimentalGetTinaClient = () => getSdk(
   generateRequester(
     createClient({
-      url: "http://localhost:4001/graphql",
+      url: "https://content.tinajs.io/2.4/content/6e9d8786-5e32-4820-8485-ced9b0412518/github/main",
       queries
     })
   )

@@ -41,7 +41,7 @@ jobs:
         run: |
           npm run build:site
           if [ -n "$TINA_PUBLIC_CLIENT_ID" ] && [ -n "$TINA_TOKEN" ]; then
-            npx tinacms build
+            npx tinacms build --skip-cloud-checks
           else
             echo "Tina credentials not set; skipping admin build"
           fi

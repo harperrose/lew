@@ -42,13 +42,15 @@ var config_default = defineConfig({
           {
             type: "string",
             name: "infoLabel",
-            label: "Info Toggle Label (closed)",
+            label: "About Page Link Label",
+            description: "Shown on the work page (e.g. About Him).",
             required: true
           },
           {
             type: "string",
             name: "onlyWorkLabel",
-            label: "Info Toggle Label (open)",
+            label: "Work Page Link Label",
+            description: "Shown on the about page (e.g. See Work).",
             required: true
           },
           {
@@ -92,7 +94,7 @@ var config_default = defineConfig({
                 name: "text",
                 label: "Text",
                 ui: { component: "textarea" },
-                description: "Preview is truncated to 400 characters on the site.",
+                description: "Preview is truncated to 1600 characters on desktop and 400 on mobile.",
                 required: true
               }
             ]
@@ -111,6 +113,12 @@ var config_default = defineConfig({
                 ui: { component: "textarea" },
                 description: "Use line breaks for stanza breaks.",
                 required: true
+              },
+              {
+                type: "image",
+                name: "image",
+                label: "Image",
+                description: "Optional image displayed with luminosity blend."
               }
             ]
           },

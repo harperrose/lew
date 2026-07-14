@@ -191,6 +191,7 @@ export type SitePoems = {
   __typename?: 'SitePoems';
   title: Scalars['String']['output'];
   text: Scalars['String']['output'];
+  image?: Maybe<Scalars['String']['output']>;
 };
 
 export type SiteInterviews = {
@@ -254,9 +255,17 @@ export type SiteShortStoriesFilter = {
   text?: InputMaybe<StringFilter>;
 };
 
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type SitePoemsFilter = {
   title?: InputMaybe<StringFilter>;
   text?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
 };
 
 export type SiteInterviewsFilter = {
@@ -387,6 +396,7 @@ export type SiteShortStoriesMutation = {
 export type SitePoemsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   text?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SiteInterviewsMutation = {
@@ -417,14 +427,14 @@ export type SiteMutation = {
   contactLinks?: InputMaybe<Array<InputMaybe<SiteContactLinksMutation>>>;
 };
 
-export type SitePartsFragment = { __typename: 'Site', siteTitle: string, infoLabel: string, onlyWorkLabel: string, columnTitles?: { __typename: 'SiteColumnTitles', shortStories?: string | null, poems?: string | null, interviews?: string | null, biography?: string | null, references?: string | null, contact?: string | null } | null, biography?: Array<{ __typename: 'SiteBiography', title: string, text: string } | null> | null, shortStories?: Array<{ __typename: 'SiteShortStories', title: string, text: string } | null> | null, poems?: Array<{ __typename: 'SitePoems', title: string, text: string } | null> | null, interviews?: Array<{ __typename: 'SiteInterviews', title: string, text: string } | null> | null, references?: Array<{ __typename: 'SiteReferences', title: string, text: string } | null> | null, contactLinks?: Array<{ __typename: 'SiteContactLinks', title: string, text: string } | null> | null };
+export type SitePartsFragment = { __typename: 'Site', siteTitle: string, infoLabel: string, onlyWorkLabel: string, columnTitles?: { __typename: 'SiteColumnTitles', shortStories?: string | null, poems?: string | null, interviews?: string | null, biography?: string | null, references?: string | null, contact?: string | null } | null, biography?: Array<{ __typename: 'SiteBiography', title: string, text: string } | null> | null, shortStories?: Array<{ __typename: 'SiteShortStories', title: string, text: string } | null> | null, poems?: Array<{ __typename: 'SitePoems', title: string, text: string, image?: string | null } | null> | null, interviews?: Array<{ __typename: 'SiteInterviews', title: string, text: string } | null> | null, references?: Array<{ __typename: 'SiteReferences', title: string, text: string } | null> | null, contactLinks?: Array<{ __typename: 'SiteContactLinks', title: string, text: string } | null> | null };
 
 export type SiteQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, siteTitle: string, infoLabel: string, onlyWorkLabel: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, columnTitles?: { __typename: 'SiteColumnTitles', shortStories?: string | null, poems?: string | null, interviews?: string | null, biography?: string | null, references?: string | null, contact?: string | null } | null, biography?: Array<{ __typename: 'SiteBiography', title: string, text: string } | null> | null, shortStories?: Array<{ __typename: 'SiteShortStories', title: string, text: string } | null> | null, poems?: Array<{ __typename: 'SitePoems', title: string, text: string } | null> | null, interviews?: Array<{ __typename: 'SiteInterviews', title: string, text: string } | null> | null, references?: Array<{ __typename: 'SiteReferences', title: string, text: string } | null> | null, contactLinks?: Array<{ __typename: 'SiteContactLinks', title: string, text: string } | null> | null } };
+export type SiteQuery = { __typename?: 'Query', site: { __typename: 'Site', id: string, siteTitle: string, infoLabel: string, onlyWorkLabel: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, columnTitles?: { __typename: 'SiteColumnTitles', shortStories?: string | null, poems?: string | null, interviews?: string | null, biography?: string | null, references?: string | null, contact?: string | null } | null, biography?: Array<{ __typename: 'SiteBiography', title: string, text: string } | null> | null, shortStories?: Array<{ __typename: 'SiteShortStories', title: string, text: string } | null> | null, poems?: Array<{ __typename: 'SitePoems', title: string, text: string, image?: string | null } | null> | null, interviews?: Array<{ __typename: 'SiteInterviews', title: string, text: string } | null> | null, references?: Array<{ __typename: 'SiteReferences', title: string, text: string } | null> | null, contactLinks?: Array<{ __typename: 'SiteContactLinks', title: string, text: string } | null> | null } };
 
 export type SiteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -436,7 +446,7 @@ export type SiteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, siteTitle: string, infoLabel: string, onlyWorkLabel: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, columnTitles?: { __typename: 'SiteColumnTitles', shortStories?: string | null, poems?: string | null, interviews?: string | null, biography?: string | null, references?: string | null, contact?: string | null } | null, biography?: Array<{ __typename: 'SiteBiography', title: string, text: string } | null> | null, shortStories?: Array<{ __typename: 'SiteShortStories', title: string, text: string } | null> | null, poems?: Array<{ __typename: 'SitePoems', title: string, text: string } | null> | null, interviews?: Array<{ __typename: 'SiteInterviews', title: string, text: string } | null> | null, references?: Array<{ __typename: 'SiteReferences', title: string, text: string } | null> | null, contactLinks?: Array<{ __typename: 'SiteContactLinks', title: string, text: string } | null> | null } | null } | null> | null } };
+export type SiteConnectionQuery = { __typename?: 'Query', siteConnection: { __typename?: 'SiteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SiteConnectionEdges', cursor: string, node?: { __typename: 'Site', id: string, siteTitle: string, infoLabel: string, onlyWorkLabel: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, columnTitles?: { __typename: 'SiteColumnTitles', shortStories?: string | null, poems?: string | null, interviews?: string | null, biography?: string | null, references?: string | null, contact?: string | null } | null, biography?: Array<{ __typename: 'SiteBiography', title: string, text: string } | null> | null, shortStories?: Array<{ __typename: 'SiteShortStories', title: string, text: string } | null> | null, poems?: Array<{ __typename: 'SitePoems', title: string, text: string, image?: string | null } | null> | null, interviews?: Array<{ __typename: 'SiteInterviews', title: string, text: string } | null> | null, references?: Array<{ __typename: 'SiteReferences', title: string, text: string } | null> | null, contactLinks?: Array<{ __typename: 'SiteContactLinks', title: string, text: string } | null> | null } | null } | null> | null } };
 
 export const SitePartsFragmentDoc = gql`
     fragment SiteParts on Site {
@@ -467,6 +477,7 @@ export const SitePartsFragmentDoc = gql`
     __typename
     title
     text
+    image
   }
   interviews {
     __typename
@@ -598,7 +609,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "http://localhost:4001/graphql",
+        url: "https://content.tinajs.io/2.4/content/6e9d8786-5e32-4820-8485-ced9b0412518/github/main",
         queries,
       })
     )

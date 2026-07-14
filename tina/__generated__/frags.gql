@@ -26,6 +26,7 @@ fragment SiteParts on Site {
     __typename
     title
     text
+    image
   }
   interviews {
     __typename

@@ -109,6 +109,7 @@ type SiteShortStories {
 type SitePoems {
   title: String!
   text: String!
+  image: String
 }
 
 type SiteInterviews {
@@ -168,9 +169,17 @@ input SiteShortStoriesFilter {
   text: StringFilter
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input SitePoemsFilter {
   title: StringFilter
   text: StringFilter
+  image: ImageFilter
 }
 
 input SiteInterviewsFilter {
@@ -253,6 +262,7 @@ input SiteShortStoriesMutation {
 input SitePoemsMutation {
   title: String
   text: String
+  image: String
 }
 
 input SiteInterviewsMutation {

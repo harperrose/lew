@@ -29,7 +29,8 @@
   "poems": [
     {
       "title": "Title",
-      "text": "After the rain the garden\nholds its breath.\nEach leaf a small mirror\nfor what the sky forgot.\n\nI walk the path you laid\nbefore you left—\nstone by stone,\nthe way back in."
+      "text": "After the rain the garden\nholds its breath.\nEach leaf a small mirror\nfor what the sky forgot.\n\nI walk the path you laid\nbefore you left—\nstone by stone,\nthe way back in.",
+      "image": "/uploads/Poetry-Book-Cover-by-John-Lewis-III.jpg"
     },
     {
       "title": "Title",
@@ -79,11 +80,11 @@
   "contactLinks": [
     {
       "title": "Email",
-      "text": "mailto:john@example.com"
+      "text": "mailto:unclel3w@gmail.com"
     },
     {
       "title": "Phone",
-      "text": "tel:+12125551234"
+      "text": "tel:‭+13465817405‬"
     },
     {
       "title": "CV",
@@ -91,7 +92,7 @@
     },
     {
       "title": "Decadent Identities",
-      "text": "#"
+      "text": "https://decadent-identities.webflow.io/"
     }
   ]
 }

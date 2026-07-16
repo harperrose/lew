@@ -21,7 +21,9 @@ function build() {
   cpSync(join(root, "src", "about.html"), join(publicDir, "about.html"));
   cpSync(join(root, "src", "script.js"), join(publicDir, "script.js"));
   cpSync(join(root, "src", "styles.css"), join(publicDir, "styles.css"));
+  cpSync(join(root, "src", "favicon.png"), join(publicDir, "favicon.png"));
   writeFileSync(join(publicDir, ".nojekyll"), "\n");
+  writeFileSync(join(publicDir, "CNAME"), "palpableworld.com\n");
 
   console.log("Built static site to public/");
 }

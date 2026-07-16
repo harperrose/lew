@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Lewis — About</title>
+  <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/din-alternate">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,29 +14,25 @@
     <a href="./" class="site-nav" data-nav="work"></a>
   </header>
 
-  <main id="main-content" class="page-content">
+  <main class="page">
     <div class="columns">
-      <section class="column" aria-label="Biography">
-        <div class="column-header" data-column="biography"></div>
-        <div class="column-body" data-content="biography"></div>
+      <section class="column">
+        <h2 class="section-title" data-column="biography"></h2>
+        <div class="section-body" data-content="biography"></div>
       </section>
 
-      <section class="column" aria-label="References">
-        <div class="column-header" data-column="references"></div>
-        <div class="column-body references-body">
-          <div class="references-carousel" aria-live="polite">
-            <p class="references-counter"><span class="references-current">1</span>/<span class="references-total">1</span></p>
-            <blockquote class="references-quote"></blockquote>
-            <cite class="references-cite"></cite>
-          </div>
+      <section class="column">
+        <h2 class="section-title" data-column="references"></h2>
+        <div class="section-body" data-references aria-live="polite">
+          <p class="references-counter"><span class="references-current">1</span>/<span class="references-total">1</span></p>
+          <blockquote class="references-quote"></blockquote>
+          <cite class="references-cite"></cite>
         </div>
       </section>
 
-      <section class="column" aria-label="Contact">
-        <div class="column-header" data-column="contact"></div>
-        <div class="column-body contact-body">
-          <nav class="contact-links" aria-label="Contact links" data-content="contact"></nav>
-        </div>
+      <section class="column">
+        <h2 class="section-title" data-column="contact"></h2>
+        <nav class="section-body contact-links" aria-label="Contact links" data-content="contact"></nav>
       </section>
     </div>
   </main>

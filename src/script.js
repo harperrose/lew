@@ -1,6 +1,6 @@
 const REFERENCE_INTERVAL_MS = 4000;
-const SHORT_STORY_LIMIT_MOBILE = 400;
-const SHORT_STORY_LIMIT_DESKTOP = 1600;
+const SHORT_STORY_LIMIT_MOBILE = 600;
+const SHORT_STORY_LIMIT_DESKTOP = 2000;
 const MOBILE_MEDIA_QUERY = window.matchMedia("(max-width: 768px)");
 const PAGE = document.body.dataset.page;
 
@@ -79,11 +79,11 @@ function renderContentBlocks(items, renderText, options = {}) {
     .map((item) => {
       const titleMarkup =
         showTitle && item.title
-          ? `<p class="content-label">${escapeHtml(item.title)}</p>`
+          ? `<p class="block-label">${escapeHtml(item.title)}</p>`
           : "";
 
       return `
-        <article class="content-block">
+        <article class="block">
           ${titleMarkup}
           ${renderText(item)}
         </article>
@@ -98,9 +98,9 @@ function renderShortStories(stories) {
       const { preview, full, isTruncated } = truncateStory(story.text);
 
       return `
-        <article class="content-block story-block" data-story-index="${index}">
-          <p class="content-label">${escapeHtml(story.title)}</p>
-          <p class="story-text">
+        <article class="block story-block" data-story-index="${index}">
+          <p class="block-label">${escapeHtml(story.title)}</p>
+          <p>
             <span class="story-preview">${escapeHtml(preview)}</span>${
               isTruncated
                 ? `<span class="story-full" hidden> ${escapeHtml(full)}</span> <button type="button" class="read-all">read all</button>`
@@ -121,8 +121,8 @@ function renderPoems(poems) {
         : "";
 
       return `
-        <article class="content-block">
-          <p class="content-label">${escapeHtml(poem.title)}</p>
+        <article class="block">
+          <p class="block-label">${escapeHtml(poem.title)}</p>
           <p>${formatPoemText(poem.text)}</p>
           ${imageMarkup}
         </article>
@@ -172,16 +172,6 @@ function renderWorkPage(data) {
     data.interviews,
     (item) => item.text
   );
-
-  document
-    .querySelector('[aria-label="Short Stories"]')
-    ?.setAttribute("aria-label", data.columnTitles.shortStories);
-  document
-    .querySelector('[aria-label="Poems"]')
-    ?.setAttribute("aria-label", data.columnTitles.poems);
-  document
-    .querySelector('[aria-label="Interview Series Excerpt"]')
-    ?.setAttribute("aria-label", data.columnTitles.interviews);
 }
 
 function renderAboutPage(data) {
@@ -203,16 +193,6 @@ function renderAboutPage(data) {
   );
   renderReference(0);
   startReferenceCycle();
-
-  document
-    .querySelector('[aria-label="Biography"]')
-    ?.setAttribute("aria-label", data.columnTitles.biography);
-  document
-    .querySelector('[aria-label="References"]')
-    ?.setAttribute("aria-label", data.columnTitles.references);
-  document
-    .querySelector('[aria-label="Contact"]')
-    ?.setAttribute("aria-label", data.columnTitles.contact);
 }
 
 function renderReference(index) {

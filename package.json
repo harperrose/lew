@@ -6,7 +6,7 @@
     "dev": "tinacms dev",
     "build:site": "node scripts/build.mjs",
     "build": "npm run build:site && tinacms build",
-    "preview": "npx serve public"
+    "preview": "npm run build:site && npx serve public"
   },
   "repository": {
     "type": "git",

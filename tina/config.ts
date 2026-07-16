@@ -14,7 +14,6 @@ export default defineConfig({
   build: {
     publicFolder: "public",
     outputFolder: "admin",
-    basePath: "lew",
   },
   media: {
     tina: {
@@ -100,7 +99,7 @@ export default defineConfig({
                 name: "text",
                 label: "Text",
                 ui: { component: "textarea" },
-                description: "Preview is truncated to 1600 characters on desktop and 400 on mobile.",
+                description: "Preview is truncated to 2000 characters on desktop and 600 on mobile.",
                 required: true,
               },
             ],

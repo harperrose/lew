@@ -1,7 +1,7 @@
 :root {
   --color-background: #E5D9BC;
   --color-text: #34280C;
-  --header-height: 2.75rem;
+  --header-height: 2rem;
   --section-title-height: 2.25rem;
   --font-family: "DIN Alternate", "Arial Narrow", Arial, sans-serif;
 }
@@ -81,7 +81,7 @@ button {
 }
 
 .page {
-  padding: 0 12px 2rem;
+  padding: 0 12px;
 }
 
 .columns {
@@ -127,7 +127,6 @@ button {
 .block-label {
   margin: 0 0 0.75rem;
   color: rgba(52, 40, 12, 0.45);
-  font-size: 0.6875rem;
   text-align: center;
 }
 
@@ -142,6 +141,8 @@ button {
 .poem-image {
   display: block;
   width: 100%;
+  max-height: 222px;
+  object-fit: cover;
   margin: 1rem 0;
   mix-blend-mode: luminosity;
 }
@@ -184,6 +185,8 @@ button {
 .contact-links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 0.5rem;
 }
 
@@ -200,6 +203,49 @@ button {
 .contact-link:focus-visible {
   opacity: 0.85;
   outline: none;
+}
+
+@media (min-width: 769px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+  }
+
+  .page {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .columns {
+    height: 100%;
+  }
+
+  .column {
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .section-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .section-body::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {

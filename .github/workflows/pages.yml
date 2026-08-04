@@ -35,7 +35,7 @@ jobs:
 
       - name: Build site and Tina admin
         env:
-          TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+          TINA_PUBLIC_CLIENT_ID: 6e9d8786-5e32-4820-8485-ced9b0412518
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           TINA_BRANCH: main
         run: |

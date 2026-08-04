@@ -3,7 +3,7 @@ import { defineConfig } from "tinacms";
 var branch = process.env.TINA_BRANCH || process.env.GITHUB_HEAD_REF || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || "main";
 var config_default = defineConfig({
   branch,
-  clientId: process.env.TINA_PUBLIC_CLIENT_ID,
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID ?? "6e9d8786-5e32-4820-8485-ced9b0412518",
   token: process.env.TINA_TOKEN,
   build: {
     publicFolder: "public",
